@@ -66,7 +66,6 @@ public class MainActivity2 extends AppCompatActivity implements SensorEventListe
             }
         });
     }
-    //开启一个子线程
     private void Startthread(){
         new Thread(){
             @Override
@@ -84,8 +83,6 @@ public class MainActivity2 extends AppCompatActivity implements SensorEventListe
             }
         }.start();
     }
-
-    //在主线程中进行数据处理
     private Handler handler=new Handler(){
         @Override
         public void handleMessage(@NonNull Message msg) {
@@ -101,7 +98,6 @@ public class MainActivity2 extends AppCompatActivity implements SensorEventListe
     @Override
     protected void onResume() {
         super.onResume();
-        //添加监听器
         sensorManager.registerListener(this,sensor,SensorManager.SENSOR_DELAY_NORMAL);
     }
 
@@ -109,7 +105,6 @@ public class MainActivity2 extends AppCompatActivity implements SensorEventListe
     protected void onPause() {
         super.onPause();
         if (sensorManager != null) {
-            //解除注册,不再接收任何传感器的更新。
             sensorManager.unregisterListener(this,sensor);
         }
     }
